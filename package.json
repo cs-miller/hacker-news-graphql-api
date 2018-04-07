@@ -1,0 +1,7 @@
+{
+  "name": "hacker-news-graphql-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Christopher Miller <millercs624@gmail.com>",
+  "license": "MIT"
+}
