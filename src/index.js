@@ -1,13 +1,18 @@
+// @flow
 import { GraphQLServer } from 'graphql-yoga';
+import { db } from './firebase';
 
 import * as Query from './resolvers/Query';
-// import * as Mutation from './resolvers/Mutation.js';
 
 const resolvers = { Query };
 
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
-  resolvers
+  resolvers,
+  context: req => ({
+    ...req,
+    db
+  })
 });
 
 // eslint-disable-next-line no-console

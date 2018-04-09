@@ -1,10 +1,19 @@
-import { get } from 'axios';
+// @flow
+import typeof { db } from '../firebase';
 
-const baseURL = 'https://hacker-news.firebaseio.com/v0/item';
+type ArgsType = {
+  id: string,
+  ids: string[]
+};
 
-// eslint-disable-next-line import/prefer-default-export, no-unused-vars
-export async function item(root, args, context, info) {
-  const { status, data } = await get(`${baseURL}/${args.id}.json`);
-  if (status !== 200) throw new Error('request failed');
-  return data;
-}
+type ContextType = {
+  db: db
+};
+
+type Resolver = (any, ArgsType, ContextType, any) => Promise<any>;
+
+// eslint-disable-next-line no-unused-vars
+export const item: Resolver = async (root, args, context, info) => context.db.fetchItem(args.id);
+
+// eslint-disable-next-line no-unused-vars
+export const user: Resolver = async (root, args, context, info) => context.db.fetchUser(args.id);

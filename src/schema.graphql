@@ -1,3 +1,30 @@
 type Query {
-  node(id: ID!): String!
+  item(id: Int!): Item
+  user(id: ID!): User
+}
+
+type User {
+  id: ID!
+  delay: Int
+  created: Int!
+  karma: Int!
+  about: String
+  submitted: [ID!]!
+}
+
+type Item {
+  id: Int!
+  deleted: Boolean
+  type: String
+  by: ID!
+  time: Int
+  dead: Boolean
+  parent: Int
+  poll: Int
+  kids: [Int]
+  url: String
+  score: Int
+  title: String
+  parts: [Int]
+  descendants: Int
 }
