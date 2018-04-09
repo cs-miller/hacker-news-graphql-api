@@ -1,9 +1,8 @@
 // @flow
-import typeof { db } from '../firebase';
+import type { db } from '../firebase';
 
 type ArgsType = {
-  id: string,
-  ids: string[]
+  id: string
 };
 
 type ContextType = {

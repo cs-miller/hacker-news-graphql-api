@@ -1,6 +1,6 @@
 // @flow
 import { GraphQLServer } from 'graphql-yoga';
-import { db } from './firebase';
+import * as db from './firebase';
 
 import * as Query from './resolvers/Query';
 

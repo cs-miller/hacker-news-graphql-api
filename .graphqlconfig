@@ -1,7 +1,0 @@
-{
-  "projects": {
-    "hacker-news-graphql-api": {
-      "schemaPath": "./src/schema.graphql"
-    }
-  }
-}

@@ -3155,6 +3155,10 @@ graphql-playground-middleware-lambda@1.4.3:
   dependencies:
     graphql-playground-html "1.5.5"
 
+graphql-relay@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/graphql-relay/-/graphql-relay-0.5.5.tgz#d6815e6edd618e878d5d921c13fc66033ec867e2"
+
 graphql-request@^1.4.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-1.5.1.tgz#cccdf5cce6432ca062b90f7b63793c77c821ff9a"
