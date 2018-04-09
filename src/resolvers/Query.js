@@ -12,7 +12,7 @@ type ContextType = {
 type Resolver = (any, ArgsType, ContextType, any) => Promise<any>;
 
 // eslint-disable-next-line no-unused-vars
-export const item: Resolver = async (root, args, context, info) => context.db.fetchItem(args.id);
+export const item: Resolver = async (root, args, context, info) => context.db.getItem(args.id);
 
 // eslint-disable-next-line no-unused-vars
-export const user: Resolver = async (root, args, context, info) => context.db.fetchUser(args.id);
+export const user: Resolver = async (root, args, context, info) => context.db.getUser(args.id);
