@@ -1,4 +1,4 @@
-// flow-typed signature: 578b49db57d1d2d2c5f4ea1547a16ff6
+// flow-typed signature: fbcc4d03bb0a26abcfdd1cc81b0a6dd3
 // flow-typed version: <<STUB>>/webpack_v^4.5.0/flow_v0.69.0
 
 /**
@@ -658,6 +658,10 @@ declare module 'webpack/lib/HotModuleReplacementPlugin' {
   declare module.exports: any;
 }
 
+declare module 'webpack/lib/HotUpdateChunk' {
+  declare module.exports: any;
+}
+
 declare module 'webpack/lib/HotUpdateChunkTemplate' {
   declare module.exports: any;
 }
@@ -963,10 +967,6 @@ declare module 'webpack/lib/performance/SizeLimitsPlugin' {
 }
 
 declare module 'webpack/lib/PrefetchPlugin' {
-  declare module.exports: any;
-}
-
-declare module 'webpack/lib/prepareOptions' {
   declare module.exports: any;
 }
 
@@ -1696,6 +1696,9 @@ declare module 'webpack/lib/HotModuleReplacement.runtime.js' {
 declare module 'webpack/lib/HotModuleReplacementPlugin.js' {
   declare module.exports: $Exports<'webpack/lib/HotModuleReplacementPlugin'>;
 }
+declare module 'webpack/lib/HotUpdateChunk.js' {
+  declare module.exports: $Exports<'webpack/lib/HotUpdateChunk'>;
+}
 declare module 'webpack/lib/HotUpdateChunkTemplate.js' {
   declare module.exports: $Exports<'webpack/lib/HotUpdateChunkTemplate'>;
 }
@@ -1926,9 +1929,6 @@ declare module 'webpack/lib/performance/SizeLimitsPlugin.js' {
 }
 declare module 'webpack/lib/PrefetchPlugin.js' {
   declare module.exports: $Exports<'webpack/lib/PrefetchPlugin'>;
-}
-declare module 'webpack/lib/prepareOptions.js' {
-  declare module.exports: $Exports<'webpack/lib/prepareOptions'>;
 }
 declare module 'webpack/lib/ProgressPlugin.js' {
   declare module.exports: $Exports<'webpack/lib/ProgressPlugin'>;
