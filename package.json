@@ -33,17 +33,15 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "build:dev": "webpack --env development",
-    "build:prod": "webpack --env production",
-    "dev": "webpack --env development --watch",
+    "build": "webpack",
+    "build:dev": "yarn build --env development",
+    "build:prod": "yarn build --env production",
+    "build:watch": "yarn build --env development --watch",
     "start": "node dist/server.bundle.js",
     "start:dev": "nodemon dist/server.bundle.js"
   },
   "lint-staged": {
-    "*{js,json}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+    "*{js,json}": ["prettier --single-quote --write", "git add"]
   },
   "husky": {
     "hooks": {

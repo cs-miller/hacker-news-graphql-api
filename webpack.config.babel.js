@@ -1,7 +1,7 @@
 import path from 'path';
 import nodeExternals from 'webpack-node-externals';
 
-export default function config(env) {
+export default function config(env = {}) {
   return {
     mode: env.production ? 'production' : 'development',
     devtool: env.production ? 'source-maps' : 'eval',
