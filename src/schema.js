@@ -4,6 +4,7 @@ import {
   connectionDefinitions,
   connectionArgs,
   nodeInterface,
+  nodeField,
   pageInfoType
 } from 'graphql-relay-tools';
 
@@ -17,6 +18,11 @@ const { connectionType: NodeConnection } = connectionDefinitions({
 
 export const schema = `
   ${nodeInterface}
+
+  type Query {
+    ${nodeField},
+    nodeFromHnId(id: ID!, isUserId: Boolean): Node
+  }
 
   type User implements Node {
     id: ID!
@@ -100,4 +106,3 @@ export const schema = `
 
   ${NodeConnection}
 `;
-console.log(schema);

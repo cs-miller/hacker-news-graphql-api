@@ -1,19 +1,12 @@
 // @flow
 import { GraphQLServer } from 'graphql-yoga';
-import * as db from './firebase';
 
 import { schema } from './schema';
-import * as Query from './resolvers/Query';
-
-const resolvers = { Query };
+import * as resolvers from './resolvers';
 
 const server = new GraphQLServer({
   typeDefs: schema,
-  resolvers,
-  context: req => ({
-    ...req,
-    db
-  })
+  resolvers
 });
 
 // // eslint-disable-next-line no-console
