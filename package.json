@@ -41,7 +41,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "lint-staged": {
-    "*{js,json}": ["prettier --single-quote --write", "git add"]
+    "*.{js,json}": ["prettier --single-quote --write", "git add"]
   },
   "husky": {
     "hooks": {
