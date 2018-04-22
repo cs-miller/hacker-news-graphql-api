@@ -26,9 +26,22 @@ export const schema = /* GraphQL */ `
   type Query {
     ${nodeField},
     nodeFromHnId(id: ID!, isUserId: Boolean): Node
+    storyFeed(type: FeedType): Feed
   }
 
-  #A user
+  enum FeedType {
+    TOP
+    NEW
+    BEST
+    ASK
+    SHOW
+    JOB
+  }
+
+  type Feed {
+    stories${connectionArgs()}: StoryConnection
+  }
+
   type User implements Node {
     # The globally unique relay id
     id: ID!
@@ -162,12 +175,8 @@ export const schema = /* GraphQL */ `
     # True if the comment is dead
     dead: Boolean
   }
-
   ${pageInfoType}
-
   ${CommentConnection}
-
   ${NodeConnection}
-
   ${StoryConnection}
 `;

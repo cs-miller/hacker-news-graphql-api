@@ -28,7 +28,16 @@ export const Query = {
     const typeName = args.isUserId ? 'User' : 'Item';
     const id = toGlobalId(typeName, args.id);
     return nodeResolver(root, { id }, context, info);
+  },
+  storyFeed: (root, args, context) => {
+    context.type = args.type;
+    return Feed.stories(root, args, context);
   }
+};
+
+export const Feed = {
+  stories: (root, args, context) =>
+    connectionFromPromisedArray(db.getFeed(context.type).then(ids => ids.map(db.getItem)), args)
 };
 
 export const Node = {
