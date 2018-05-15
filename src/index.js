@@ -12,11 +12,11 @@ const graphQLServer = new GraphQLServer({
 
 const port = 4000;
 
-process.env.APOLLO_ENGINE_KEY = 'service:cs-miller-8586:vVBPtJ9McDvfn_weEok7zQ';
+process.env.ENGINE_KEY = 'service:cs-miller-8586:vVBPtJ9McDvfn_weEok7zQ';
 
-if (process.env.APOLLO_ENGINE_KEY) {
+if (process.env.ENGINE_KEY) {
   const engine = new ApolloEngine({
-    apiKey: process.env.APOLLO_ENGINE_KEY
+    apiKey: process.env.ENGINE_KEY
   });
 
   const httpServer = graphQLServer.createHttpServer({

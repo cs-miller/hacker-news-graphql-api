@@ -26,7 +26,7 @@ export const schema = /* GraphQL */ `
   type Query {
     ${nodeField},
     nodeFromHnId(id: ID!, isUserId: Boolean): Node
-    storyFeed(type: FeedType): Feed
+    storyFeed${connectionArgs(['type: FeedType'])}: StoryConnection
   }
 
   enum FeedType {
@@ -36,10 +36,6 @@ export const schema = /* GraphQL */ `
     ASK
     SHOW
     JOB
-  }
-
-  type Feed {
-    stories${connectionArgs()}: StoryConnection
   }
 
   type User implements Node {

@@ -5,10 +5,19 @@ import {
   fromGlobalId,
   toGlobalId,
   globalIdResolver,
-  connectionFromPromisedArray
+  connectionFromPromisedArray,
+  connectionFromArray
 } from 'graphql-relay-tools';
 
 import * as db from '../firebase';
+
+const resolveConnection = async ({ edges, ...connection }) => {
+  const fetchedEdges = await Promise.all(edges.map(async ({ node, ...edge }) => {
+    const fetchedNode = await db.getItem(node);
+    return { ...edge, node: fetchedNode };
+  }));
+  return { ...connection, edges: fetchedEdges };
+};
 
 const { nodeResolver } = nodeDefinitions((globalId) => {
   const { type, id } = fromGlobalId(globalId);
@@ -24,24 +33,19 @@ const { nodeResolver } = nodeDefinitions((globalId) => {
 
 export const Query = {
   node: nodeResolver,
-  nodeFromHnId: (root, args, context, info) => {
+  nodeFromHnId: (root: any, args: any, context: any, info: any) => {
     const typeName = args.isUserId ? 'User' : 'Item';
     const id = toGlobalId(typeName, args.id);
     return nodeResolver(root, { id }, context, info);
   },
-  storyFeed: (root, args, context) => {
-    context.type = args.type;
-    return Feed.stories(root, args, context);
+  storyFeed: async (root: any, args: any) => {
+    const connection = await connectionFromPromisedArray(db.getFeed(args.type), args);
+    return resolveConnection(connection);
   }
 };
 
-export const Feed = {
-  stories: (root, args, context) =>
-    connectionFromPromisedArray(db.getFeed(context.type).then(ids => ids.map(db.getItem)), args)
-};
-
 export const Node = {
-  __resolveType: (root) => {
+  __resolveType: (root: any) => {
     if (root.karma) return 'User';
     switch (root.type) {
       case 'story':
@@ -62,43 +66,42 @@ export const Node = {
 
 export const User = {
   id: globalIdResolver('User', root => root.id),
-  hnId: root => root.id,
-  submitted: (root, args) =>
-    connectionFromPromisedArray(Promise.all(root.submitted.map(db.getItem)), args)
+  hnId: (root: any) => root.id,
+  submitted: (root: any, args: any) => resolveConnection(connectionFromArray(root.submitted, args))
 };
 
 export const Story = {
   id: globalIdResolver('Item'),
-  hnId: root => root.id,
-  by: root => db.getUser(root.by),
-  kids: (root, args) => connectionFromPromisedArray(Promise.all(root.kids.map(db.getItem)), args)
+  hnId: (root: any) => root.id,
+  by: (root: any) => db.getUser(root.by),
+  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids, args))
 };
 
 export const Job = {
   id: globalIdResolver('Item'),
-  hnId: root => root.id,
-  by: root => db.getUser(root.by)
+  hnId: (root: any) => root.id,
+  by: (root: any) => db.getUser(root.by)
 };
 
 export const Poll = {
   id: globalIdResolver('Item'),
-  hnId: root => root.id,
-  by: root => db.getUser(root.by),
-  kids: (root, args) => connectionFromPromisedArray(Promise.all(root.kids.map(db.getItem)), args),
-  parts: root => root.parts.map(db.getItem)
+  hnId: (root: any) => root.id,
+  by: (root: any) => db.getUser(root.by),
+  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids, args)),
+  parts: (root: any) => root.parts.map(db.getItem)
 };
 
 export const PollOpt = {
   id: globalIdResolver('Item'),
-  hnId: root => root.id,
-  by: root => db.getUser(root.by),
-  parent: root => db.getItem(root.parent)
+  hnId: (root: any) => root.id,
+  by: (root: any) => db.getUser(root.by),
+  parent: (root: any) => db.getItem(root.parent)
 };
 
 export const Comment = {
   id: globalIdResolver('Item'),
-  hnId: root => root.id,
-  by: root => db.getUser(root.by),
-  parent: root => db.getItem(root.parent),
-  kids: (root, args) => connectionFromPromisedArray(Promise.all(root.kids.map(db.getItem)), args)
+  hnId: (root: any) => root.id,
+  by: (root: any) => db.getUser(root.by),
+  parent: (root: any) => db.getItem(root.parent),
+  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids, args))
 };
