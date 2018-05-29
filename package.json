@@ -16,7 +16,7 @@
   "dependencies": {
     "apollo-engine": "^1.1.1",
     "babel-polyfill": "^6.26.0",
-    "firebase": "^4.12.1",
+    "firebase": "^5.0.4",
     "graphql-relay-tools": "^0.1.1",
     "graphql-yoga": "^1.8.2"
   },
@@ -32,7 +32,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.10.0",
-    "flow-bin": "^0.69.0",
+    "flow-bin": "^0.73.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
     "nodemon": "^1.17.3",
