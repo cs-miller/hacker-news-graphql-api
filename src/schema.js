@@ -8,6 +8,8 @@ import {
   pageInfoType
 } from 'graphql-relay-tools';
 
+import { gql } from 'apollo-server';
+
 const { connectionType: CommentConnection } = connectionDefinitions({
   name: 'Comment'
 });
@@ -20,7 +22,7 @@ const { connectionType: NodeConnection } = connectionDefinitions({
   name: 'Node'
 });
 
-export const schema = /* GraphQL */ `
+export const schema = gql`
   ${nodeInterface}
 
   type Query {

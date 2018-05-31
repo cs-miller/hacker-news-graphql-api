@@ -1,6 +1,6 @@
 {
   "alias": "hn-gql",
   "env": {
-    "ENGINE_KEY": "@engine_key"
+    "ENGINE_API_KEY": "@engine_api_key"
   }
 }
