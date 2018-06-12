@@ -8,6 +8,7 @@ const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
   tracing: true,
+  introspection: true,
   cacheControl: {
     defaultMaxAge: 300
   }
