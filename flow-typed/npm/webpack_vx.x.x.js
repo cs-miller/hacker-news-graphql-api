@@ -1,4 +1,4 @@
-// flow-typed signature: 745d275ef336d6d52beb8857e47df8ae
+// flow-typed signature: 72e41b11525d503eaf01b48285289b7f
 // flow-typed version: <<STUB>>/webpack_v^4.10.2/flow_v0.73.0
 
 /**
@@ -127,6 +127,10 @@ declare module 'webpack/lib/ChunkRenderError' {
 }
 
 declare module 'webpack/lib/ChunkTemplate' {
+  declare module.exports: any;
+}
+
+declare module 'webpack/lib/CommentCompilationWarning' {
   declare module.exports: any;
 }
 
@@ -511,6 +515,10 @@ declare module 'webpack/lib/dependencies/SystemPlugin' {
 }
 
 declare module 'webpack/lib/dependencies/UnsupportedDependency' {
+  declare module.exports: any;
+}
+
+declare module 'webpack/lib/dependencies/WebAssemblyExportImportedDependency' {
   declare module.exports: any;
 }
 
@@ -1110,6 +1118,10 @@ declare module 'webpack/lib/wasm/UnsupportedWebAssemblyFeatureError' {
   declare module.exports: any;
 }
 
+declare module 'webpack/lib/wasm/WasmFinalizeExportsPlugin' {
+  declare module.exports: any;
+}
+
 declare module 'webpack/lib/wasm/WasmMainTemplatePlugin' {
   declare module.exports: any;
 }
@@ -1307,6 +1319,9 @@ declare module 'webpack/lib/ChunkRenderError.js' {
 }
 declare module 'webpack/lib/ChunkTemplate.js' {
   declare module.exports: $Exports<'webpack/lib/ChunkTemplate'>;
+}
+declare module 'webpack/lib/CommentCompilationWarning.js' {
+  declare module.exports: $Exports<'webpack/lib/CommentCompilationWarning'>;
 }
 declare module 'webpack/lib/compareLocations.js' {
   declare module.exports: $Exports<'webpack/lib/compareLocations'>;
@@ -1595,6 +1610,9 @@ declare module 'webpack/lib/dependencies/SystemPlugin.js' {
 }
 declare module 'webpack/lib/dependencies/UnsupportedDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/UnsupportedDependency'>;
+}
+declare module 'webpack/lib/dependencies/WebAssemblyExportImportedDependency.js' {
+  declare module.exports: $Exports<'webpack/lib/dependencies/WebAssemblyExportImportedDependency'>;
 }
 declare module 'webpack/lib/dependencies/WebAssemblyImportDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/WebAssemblyImportDependency'>;
@@ -2042,6 +2060,9 @@ declare module 'webpack/lib/WarnNoModeSetPlugin.js' {
 }
 declare module 'webpack/lib/wasm/UnsupportedWebAssemblyFeatureError.js' {
   declare module.exports: $Exports<'webpack/lib/wasm/UnsupportedWebAssemblyFeatureError'>;
+}
+declare module 'webpack/lib/wasm/WasmFinalizeExportsPlugin.js' {
+  declare module.exports: $Exports<'webpack/lib/wasm/WasmFinalizeExportsPlugin'>;
 }
 declare module 'webpack/lib/wasm/WasmMainTemplatePlugin.js' {
   declare module.exports: $Exports<'webpack/lib/wasm/WasmMainTemplatePlugin'>;

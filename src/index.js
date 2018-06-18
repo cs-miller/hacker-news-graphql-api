@@ -14,4 +14,4 @@ const server = new ApolloServer({
   }
 });
 
-server.listen({ engineProxy: true }).then(({ url }) => console.log(`server ready at ${url}`));
+server.listen().then(({ url }) => console.log(`server ready at ${url}`));
