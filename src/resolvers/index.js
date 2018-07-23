@@ -67,14 +67,15 @@ export const Node = {
 export const User = {
   id: globalIdResolver('User', root => root.id),
   hnId: (root: any) => root.id,
-  submitted: (root: any, args: any) => resolveConnection(connectionFromArray(root.submitted, args))
+  submitted: (root: any, args: any) =>
+    resolveConnection(connectionFromArray(root.submitted || [], args))
 };
 
 export const Story = {
   id: globalIdResolver('Item'),
   hnId: (root: any) => root.id,
   by: (root: any) => db.getUser(root.by),
-  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids, args))
+  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids || [], args))
 };
 
 export const Job = {
@@ -87,7 +88,7 @@ export const Poll = {
   id: globalIdResolver('Item'),
   hnId: (root: any) => root.id,
   by: (root: any) => db.getUser(root.by),
-  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids, args)),
+  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids || [], args)),
   parts: (root: any) => root.parts.map(db.getItem)
 };
 
@@ -103,5 +104,5 @@ export const Comment = {
   hnId: (root: any) => root.id,
   by: (root: any) => db.getUser(root.by),
   parent: (root: any) => db.getItem(root.parent),
-  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids, args))
+  kids: (root: any, args: any) => resolveConnection(connectionFromArray(root.kids || [], args))
 };
